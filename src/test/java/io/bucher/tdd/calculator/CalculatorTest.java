@@ -122,7 +122,7 @@ public class CalculatorTest {
                     result += getAnInt(tokens[i + 1]);
                     break;
                 case "-":
-                    result -= getAnInt(tokens[1 + 1]);
+                    result -= getAnInt(tokens[i + 1]);
                     break;
                 default:
                     throw new IllegalStateException();
