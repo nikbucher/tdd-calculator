@@ -55,6 +55,18 @@ public class CalculatorTest {
         assertThat(result, equalTo(4));
     }
 
+    @Test
+    public void add_2_plus_3_equals_5() {
+        // given
+        final String addition = "2 + 3";
+
+        // when
+        final int result = calculate(addition);
+
+        // then
+        assertThat(result, equalTo(5));
+    }
+
     private int calculate(String number) {
         if ("".equals(number)) {
             return 0;
