@@ -93,21 +93,29 @@ public class CalculatorTest {
 
     private int calculate(String expression) {
         expression = expression.trim();
-        if ("".equals(expression)) {
-            return 0;
-        } else if (expression.contains(" ")) {
-            final String[] expressionAsArray = expression.split(" ");
+        final String[] expressionAsArray = expression.split(" ");
+        if (expressionAsArray.length > 1) {
             switch (expressionAsArray[1]) {
                 case "+":
-                    return getAnInt(expressionAsArray[0]) + getAnInt(expressionAsArray[2]);
+                    return add(getAnInt(expressionAsArray[0]), getAnInt(expressionAsArray[2]));
                 case "-":
-                    return getAnInt(expressionAsArray[0]) - getAnInt(expressionAsArray[2]);
+                    return subtract(getAnInt(expressionAsArray[0]), getAnInt(expressionAsArray[2]));
                 default:
                     throw new IllegalStateException();
             }
+        } else if ("".equals(expression)) {
+            return 0;
         } else {
             return getAnInt(expression);
         }
+    }
+
+    private int subtract(int minuend, int subtrahend) {
+        return minuend - subtrahend;
+    }
+
+    private int add(int summand1, int summand2) {
+        return summand1 + summand2;
     }
 
 
