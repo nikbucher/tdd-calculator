@@ -80,6 +80,18 @@ public class CalculatorTest {
     }
 
     @Test
+    public void add_2_plus_3_plus_4_equals_9() {
+        // given
+        final String addition = "2 + 3 + 4";
+
+        // when
+        final int result = calculate(addition);
+
+        // then
+        assertThat(result, equalTo(9));
+    }
+
+    @Test
     public void subtract_8_minus_5_equals_3() {
         // given
         final String subtraction = "8 - 5";
