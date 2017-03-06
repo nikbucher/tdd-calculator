@@ -85,6 +85,9 @@ public class CalculatorTest {
         } else if (expression.contains("+")) {
             final String[] expressionArray = expression.split("\\+");
             return getAnInt(expressionArray[0]) + getAnInt(expressionArray[1]);
+        } else if (expression.contains("-")) {
+            final String[] expressionArray = expression.split("-");
+            return getAnInt(expressionArray[0]) - getAnInt(expressionArray[1]);
         } else {
             return getAnInt(expression);
         }
