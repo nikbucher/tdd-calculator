@@ -92,18 +92,24 @@ public class CalculatorTest {
     }
 
     private int calculate(String expression) {
+        expression = expression.trim();
         if ("".equals(expression)) {
             return 0;
-        } else if (expression.contains("+")) {
-            final String[] expressionArray = expression.split("\\+");
-            return getAnInt(expressionArray[0]) + getAnInt(expressionArray[1]);
-        } else if (expression.contains("-")) {
-            final String[] expressionArray = expression.split("-");
-            return getAnInt(expressionArray[0]) - getAnInt(expressionArray[1]);
+        } else if (expression.contains(" ")) {
+            final String[] expressionAsArray = expression.split(" ");
+            switch (expressionAsArray[1]) {
+                case "+":
+                    return getAnInt(expressionAsArray[0]) + getAnInt(expressionAsArray[2]);
+                case "-":
+                    return getAnInt(expressionAsArray[0]) - getAnInt(expressionAsArray[2]);
+                default:
+                    throw new IllegalStateException();
+            }
         } else {
             return getAnInt(expression);
         }
     }
+
 
     private int getAnInt(String number) {
         return parseInt(number.trim());
