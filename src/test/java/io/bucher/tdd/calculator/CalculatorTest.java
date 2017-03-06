@@ -67,11 +67,14 @@ public class CalculatorTest {
         assertThat(result, equalTo(5));
     }
 
-    private int calculate(String number) {
-        if ("".equals(number)) {
+    private int calculate(String expression) {
+        if ("".equals(expression)) {
             return 0;
+        } else if (expression.contains("+")) {
+            final String[] expressionArray = expression.split("\\+");
+            return parseInt(expressionArray[0].trim()) + parseInt(expressionArray[1].trim());
         } else {
-            return parseInt(number.trim());
+            return parseInt(expression.trim());
         }
     }
 }
