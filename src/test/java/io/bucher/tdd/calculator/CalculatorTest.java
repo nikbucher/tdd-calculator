@@ -72,9 +72,13 @@ public class CalculatorTest {
             return 0;
         } else if (expression.contains("+")) {
             final String[] expressionArray = expression.split("\\+");
-            return parseInt(expressionArray[0].trim()) + parseInt(expressionArray[1].trim());
+            return getAnInt(expressionArray[0]) + getAnInt(expressionArray[1]);
         } else {
-            return parseInt(expression.trim());
+            return getAnInt(expression);
         }
+    }
+
+    private int getAnInt(String number) {
+        return parseInt(number.trim());
     }
 }
