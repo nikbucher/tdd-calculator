@@ -18,7 +18,23 @@ public class CalculatorTest {
         assertThat(result, equalTo(0));
     }
 
-    private int calculate(String empty) {
-        return 0;
+    @Test
+    public void number_2_is_2() {
+        // given
+        final String two = "2";
+
+        // when
+        final int result = calculate(two);
+
+        // then
+        assertThat(result, equalTo(2));
+    }
+
+    private int calculate(String number) {
+        if ("".equals(number)) {
+            return 0;
+        } else {
+            return 2;
+        }
     }
 }
