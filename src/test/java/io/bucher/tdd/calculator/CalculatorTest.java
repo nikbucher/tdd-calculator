@@ -96,17 +96,20 @@ public class CalculatorTest {
         if ("".equals(expression)) {
             return 0;
         } else if (expression.contains(" ")) {
-            final String[] expressionAsArray = expression.split(" ");
-            switch (expressionAsArray[1]) {
-                case "+":
-                    return getAnInt(expressionAsArray[0]) + getAnInt(expressionAsArray[2]);
-                case "-":
-                    return getAnInt(expressionAsArray[0]) - getAnInt(expressionAsArray[2]);
-                default:
-                    throw new IllegalStateException();
-            }
+            return calculate(expression.split(" "));
         } else {
             return getAnInt(expression);
+        }
+    }
+
+    private int calculate(String[] expressionAsArray) {
+        switch (expressionAsArray[1]) {
+            case "+":
+                return getAnInt(expressionAsArray[0]) + getAnInt(expressionAsArray[2]);
+            case "-":
+                return getAnInt(expressionAsArray[0]) - getAnInt(expressionAsArray[2]);
+            default:
+                throw new IllegalStateException();
         }
     }
 
