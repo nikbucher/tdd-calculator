@@ -114,15 +114,21 @@ public class CalculatorTest {
         }
     }
 
-    private int calculate(String[] expressionAsArray) {
-        switch (expressionAsArray[1]) {
-            case "+":
-                return getAnInt(expressionAsArray[0]) + getAnInt(expressionAsArray[2]);
-            case "-":
-                return getAnInt(expressionAsArray[0]) - getAnInt(expressionAsArray[2]);
-            default:
-                throw new IllegalStateException();
+    private int calculate(String[] tokens) {
+        int result = getAnInt(tokens[0]);
+        for (int i = 1; i < tokens.length; i += 2) {
+            switch (tokens[i]) {
+                case "+":
+                    result += getAnInt(tokens[i + 1]);
+                    break;
+                case "-":
+                    result -= getAnInt(tokens[1 + 1]);
+                    break;
+                default:
+                    throw new IllegalStateException();
+            }
         }
+        return result;
     }
 
 
