@@ -8,7 +8,7 @@ import static org.junit.Assert.assertThat;
 
 public class CalculatorTest {
 
-    private int i;
+    private int i = 0;
 
     @Test
     public void empty_string_is_0() {
@@ -118,7 +118,6 @@ public class CalculatorTest {
     }
 
     private int calculate(String[] tokens) {
-        i = 0;
         int result = getAnInt(getNextToken(tokens));
         while (i < tokens.length) {
             switch (getNextToken(tokens)) {
