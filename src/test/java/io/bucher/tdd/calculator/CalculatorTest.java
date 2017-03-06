@@ -44,6 +44,18 @@ public class CalculatorTest {
     }
 
     @Test
+    public void number_minus3_is_minus3() {
+        // given
+        final String minusThree = "-3";
+
+        // when
+        final int result = calculate(minusThree);
+
+        // then
+        assertThat(result, equalTo(-3));
+    }
+
+    @Test
     public void number_4_with_space_is_4() {
         // given
         final String four = "4 ";
