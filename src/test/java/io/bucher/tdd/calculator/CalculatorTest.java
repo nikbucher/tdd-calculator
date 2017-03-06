@@ -30,6 +30,18 @@ public class CalculatorTest {
         assertThat(result, equalTo(2));
     }
 
+    @Test
+    public void number_4_is_4() {
+        // given
+        final String four = "4";
+
+        // when
+        final int result = calculate(four);
+
+        // then
+        assertThat(result, equalTo(4));
+    }
+
     private int calculate(String number) {
         if ("".equals(number)) {
             return 0;
