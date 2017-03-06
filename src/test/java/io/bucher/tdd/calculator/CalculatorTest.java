@@ -59,7 +59,7 @@ public class CalculatorTest {
         if ("".equals(number)) {
             return 0;
         } else {
-            return parseInt(number);
+            return parseInt(number.trim());
         }
     }
 }
