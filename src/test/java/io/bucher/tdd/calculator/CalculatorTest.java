@@ -2,6 +2,7 @@ package io.bucher.tdd.calculator;
 
 import org.junit.Test;
 
+import static java.lang.Integer.parseInt;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
@@ -46,7 +47,7 @@ public class CalculatorTest {
         if ("".equals(number)) {
             return 0;
         } else {
-            return 2;
+            return parseInt(number);
         }
     }
 }
