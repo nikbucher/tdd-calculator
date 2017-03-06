@@ -67,6 +67,18 @@ public class CalculatorTest {
         assertThat(result, equalTo(5));
     }
 
+    @Test
+    public void subtract_8_minus_5_equals_3() {
+        // given
+        final String subtraction = "8 - 5";
+
+        // when
+        final int result = calculate(subtraction);
+
+        // then
+        assertThat(result, equalTo(3));
+    }
+
     private int calculate(String expression) {
         if ("".equals(expression)) {
             return 0;
