@@ -115,14 +115,15 @@ public class CalculatorTest {
     }
 
     private int calculate(String[] tokens) {
-        int result = getAnInt(tokens[0]);
-        for (int i = 1; i < tokens.length; i += 2) {
-            switch (tokens[i]) {
+        int i = 0;
+        int result = getAnInt(tokens[i++]);
+        while (i < tokens.length) {
+            switch (tokens[i++]) {
                 case "+":
-                    result += getAnInt(tokens[i + 1]);
+                    result += getAnInt(tokens[i++]);
                     break;
                 case "-":
-                    result -= getAnInt(tokens[1 + 1]);
+                    result -= getAnInt(tokens[i++]);
                     break;
                 default:
                     throw new IllegalStateException();
