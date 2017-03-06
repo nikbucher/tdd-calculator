@@ -7,6 +7,9 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 public class CalculatorTest {
+
+    private int i;
+
     @Test
     public void empty_string_is_0() {
         // given
@@ -115,21 +118,25 @@ public class CalculatorTest {
     }
 
     private int calculate(String[] tokens) {
-        int i = 0;
-        int result = getAnInt(tokens[i++]);
+        i = 0;
+        int result = getAnInt(getNextToken(tokens));
         while (i < tokens.length) {
-            switch (tokens[i++]) {
+            switch (getNextToken(tokens)) {
                 case "+":
-                    result += getAnInt(tokens[i++]);
+                    result += getAnInt(getNextToken(tokens));
                     break;
                 case "-":
-                    result -= getAnInt(tokens[i++]);
+                    result -= getAnInt(getNextToken(tokens));
                     break;
                 default:
                     throw new IllegalStateException();
             }
         }
         return result;
+    }
+
+    private String getNextToken(String[] tokens) {
+        return tokens[i++];
     }
 
 
