@@ -2,6 +2,9 @@ package io.bucher.tdd.calculator;
 
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.function.BiFunction;
+
 import static java.lang.Integer.parseInt;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -94,30 +97,17 @@ public class CalculatorTest {
     private int calculate(String expression) {
         expression = expression.trim();
         final String[] expressionAsArray = expression.split(" ");
+        final HashMap<String, BiFunction<Integer, Integer, Integer>> operations = new HashMap<>();
+        operations.put("+", (summand1, summand2) -> summand1 + summand2);
+        operations.put("-", (minuend, subtrahend) -> minuend - subtrahend);
         if (expressionAsArray.length > 1) {
-            switch (expressionAsArray[1]) {
-                case "+":
-                    return add(getAnInt(expressionAsArray[0]), getAnInt(expressionAsArray[2]));
-                case "-":
-                    return subtract(getAnInt(expressionAsArray[0]), getAnInt(expressionAsArray[2]));
-                default:
-                    throw new IllegalStateException();
-            }
+            return operations.get(expressionAsArray[1]).apply(getAnInt(expressionAsArray[0]), getAnInt(expressionAsArray[2]));
         } else if ("".equals(expression)) {
             return 0;
         } else {
             return getAnInt(expression);
         }
     }
-
-    private int subtract(int minuend, int subtrahend) {
-        return minuend - subtrahend;
-    }
-
-    private int add(int summand1, int summand2) {
-        return summand1 + summand2;
-    }
-
 
     private int getAnInt(String number) {
         return parseInt(number.trim());
