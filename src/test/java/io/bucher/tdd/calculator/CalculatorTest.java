@@ -7,12 +7,18 @@ import static org.junit.Assert.assertThat;
 
 public class CalculatorTest {
     @Test
-    public void assert_true_is_true() {
+    public void empty_string_is_0() {
         // given
+        final String empty = "";
 
         // when
+        final int result = calculate(empty);
 
         // then
-        assertThat(true, equalTo(true));
+        assertThat(result, equalTo(0));
+    }
+
+    private int calculate(String empty) {
+        return 0;
     }
 }
