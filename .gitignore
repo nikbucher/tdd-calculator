@@ -1,0 +1,10 @@
+.*
+!.gitignore
+!.editorconfig
+build/
+bin/
+*.iml
+*.ipr
+*.iws
+*~
+*.log

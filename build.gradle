@@ -1,0 +1,13 @@
+apply plugin: "java"
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+assert JavaVersion.current().isJava8Compatible()
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+dependencies {
+    testCompile "junit:junit:4.12"
+}
