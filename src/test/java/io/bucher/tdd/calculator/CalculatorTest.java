@@ -117,6 +117,18 @@ public class CalculatorTest {
         assertThat(result, equalTo(12));
     }
 
+    @Test
+    public void calculate_2_plus_3_multipliedby_4_equals_14() {
+        // given
+        final String term = "2 + 3 * 4";
+
+        // when
+        final int result = calculate(term);
+
+        // then
+        assertThat(result, equalTo(14));
+    }
+
     private int calculate(String expression) {
         final StringTokenizer tokens = new StringTokenizer(expression, " ");
         if (hasAnyTokens(tokens)) {
