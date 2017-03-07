@@ -141,6 +141,8 @@ public class CalculatorTest {
                 return number + nextNumber;
             case "-":
                 return number - nextNumber;
+            case "*":
+                return number * nextNumber;
             default:
                 throw new IllegalStateException();
         }
