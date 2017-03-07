@@ -108,10 +108,10 @@ public class CalculatorTest {
     @Test
     public void calculate_3_multipliedby_4_equals_12() {
         // given
-        final String subtraction = "3 * 4";
+        final String multiplication = "3 * 4";
 
         // when
-        final int result = calculate(subtraction);
+        final int result = calculate(multiplication);
 
         // then
         assertThat(result, equalTo(12));
