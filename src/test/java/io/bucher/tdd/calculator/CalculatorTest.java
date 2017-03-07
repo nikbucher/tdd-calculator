@@ -105,6 +105,18 @@ public class CalculatorTest {
         assertThat(result, equalTo(3));
     }
 
+    @Test
+    public void calculate_3_multipliedby_4_equals_12() {
+        // given
+        final String subtraction = "3 * 4";
+
+        // when
+        final int result = calculate(subtraction);
+
+        // then
+        assertThat(result, equalTo(12));
+    }
+
     private int calculate(String expression) {
         final StringTokenizer tokens = new StringTokenizer(expression, " ");
         if (hasAnyTokens(tokens)) {
