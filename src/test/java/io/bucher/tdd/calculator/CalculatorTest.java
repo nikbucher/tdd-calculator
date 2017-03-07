@@ -2,6 +2,8 @@ package io.bucher.tdd.calculator;
 
 import org.junit.Test;
 
+import java.util.StringTokenizer;
+
 import static java.lang.Integer.parseInt;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -104,35 +106,36 @@ public class CalculatorTest {
     }
 
     private int calculate(String expression) {
-        expression = expression.trim();
-        if ("".equals(expression)) {
-            return 0;
-        } else if (expression.contains(" ")) {
-            return calculate(expression.split(" "));
-        } else {
-            return getAnInt(expression);
-        }
-    }
-
-    private int calculate(String[] tokens) {
-        int result = getAnInt(tokens[0]);
-        for (int i = 1; i < tokens.length; i += 2) {
-            switch (tokens[i]) {
-                case "+":
-                    result += getAnInt(tokens[i + 1]);
-                    break;
-                case "-":
-                    result -= getAnInt(tokens[i + 1]);
-                    break;
-                default:
-                    throw new IllegalStateException();
+        final StringTokenizer tokens = new StringTokenizer(expression, " ");
+        if (hasAnyTokens(tokens)) {
+            int result = nextNumber(tokens);
+            while (tokens.hasMoreTokens()) {
+                final String operator = tokens.nextToken();
+                result = calculate(result, operator, nextNumber(tokens));
             }
+            return result;
+        } else {
+            return 0;
         }
-        return result;
     }
 
-
-    private int getAnInt(String number) {
-        return parseInt(number.trim());
+    private boolean hasAnyTokens(StringTokenizer tokens) {
+        return tokens.countTokens() > 0;
     }
+
+    private int calculate(int number, String operator, int nextNumber) {
+        switch (operator) {
+            case "+":
+                return number + nextNumber;
+            case "-":
+                return number - nextNumber;
+            default:
+                throw new IllegalStateException();
+        }
+    }
+
+    private int nextNumber(StringTokenizer tokens) {
+        return parseInt(tokens.nextToken());
+    }
+
 }
